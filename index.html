@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhinav Kamatgi</title>
+  <meta name="description" content="Abhinav Kamatgi — Economics + Computer Science at Georgetown University." />
+
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --paper: #fbfbf8;
+      --text: #161616;
+      --muted: #6f6f69;
+      --line: #d8d8d1;
+      --soft: #ecece6;
+      --dark: #161616;
+      --white: #ffffff;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .mono,
+    .eyebrow,
+    .section-number,
+    .timeline-year,
+    .timeline-meta,
+    .node-subtitle,
+    .drawer-index,
+    .tag,
+    .terminal,
+    .footer-meta,
+    .status,
+    .index-number {
+      font-family: "Courier New", Courier, monospace;
+      letter-spacing: .06em;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 247, 244, .94);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 13px;
+    }
+
+    nav a {
+      color: var(--muted);
+      transition: color .2s ease;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 80px;
+      align-items: center;
+      padding: 100px 0 90px;
+    }
+
+    .hero-topline {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--text);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 780px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(64px, 9vw, 126px);
+      font-weight: 400;
+      letter-spacing: -.065em;
+      line-height: .88;
+    }
+
+    .hero-intro {
+      max-width: 680px;
+      margin: 36px 0 0;
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.55;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 22px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+
+    .hero-links a {
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 2px;
+    }
+
+    .hero-index {
+      border-top: 1px solid var(--text);
+      align-self: end;
+    }
+
+    .index-row {
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+    }
+
+    .index-number {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .index-arrow {
+      color: var(--muted);
+    }
+
+    section {
+      padding: 110px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 30px;
+      margin-bottom: 58px;
+    }
+
+    .section-number {
+      font-size: 11px;
+      color: var(--muted);
+      padding-top: 11px;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(40px, 5.5vw, 72px);
+      font-weight: 400;
+      letter-spacing: -.04em;
+      line-height: 1;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-left: 120px;
+    }
+
+    .about-grid p {
+      margin: 0 0 22px;
+      font-size: 17px;
+    }
+
+    .about-side {
+      border-left: 1px solid var(--line);
+      padding-left: 30px;
+    }
+
+    .fact {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .fact-label {
+      display: block;
+      color: var(--muted);
+      font-family: "Courier New", monospace;
+      font-size: 10px;
+      letter-spacing: .08em;
+      margin-bottom: 5px;
+    }
+
+    .timeline {
+      margin-left: 120px;
+      border-top: 1px solid var(--text);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 36px;
+      padding: 34px 0 42px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-year {
+      font-size: 12px;
+      color: var(--muted);
+      padding-top: 5px;
+    }
+
+    .timeline-content h3 {
+      margin: 0 0 5px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 29px;
+      font-weight: 400;
+    }
+
+    .timeline-meta {
+      color: var(--muted);
+      font-size: 10px;
+      margin-bottom: 18px;
+    }
+
+    .timeline-content p {
+      max-width: 790px;
+      margin: 0 0 16px;
+      font-size: 16px;
+    }
+
+    .notes-intro {
+      max-width: 720px;
+      margin: -25px 0 45px 120px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .notes-map {
+      position: relative;
+      min-height: 620px;
+      border: 1px solid var(--text);
+      background-image:
+        linear-gradient(var(--soft) 1px, transparent 1px),
+        linear-gradient(90deg, var(--soft) 1px, transparent 1px);
+      background-size: 44px 44px;
+      overflow: hidden;
+    }
+
+    .notes-map::before {
+      content: "CLICK A NOTE TO OPEN";
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      font: 10px "Courier New", monospace;
+      letter-spacing: .08em;
+      color: var(--muted);
+    }
+
+    .note-node {
+      position: absolute;
+      width: 205px;
+      border: 0;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      color: var(--text);
+      padding: 0;
+    }
+
+    .node-dot {
+      display: block;
+      width: 13px;
+      height: 13px;
+      background: var(--text);
+      border-radius: 50%;
+      margin-bottom: 9px;
+      transition: transform .2s ease;
+    }
+
+    .note-node:hover .node-dot {
+      transform: scale(1.5);
+    }
+
+    .node-title {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 21px;
+      line-height: 1.08;
+    }
+
+    .node-subtitle {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .node-1 { left: 9%; top: 19%; }
+    .node-2 { left: 42%; top: 11%; }
+    .node-3 { right: 8%; top: 26%; }
+    .node-4 { left: 19%; top: 52%; }
+    .node-5 { left: 48%; top: 43%; }
+    .node-6 { right: 8%; top: 60%; }
+    .node-7 { left: 7%; bottom: 8%; }
+    .node-8 { left: 39%; bottom: 7%; }
+    .node-9 { right: 7%; bottom: 7%; }
+
+    .os-grid {
+      margin-left: 120px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid var(--text);
+      border-left: 1px solid var(--line);
+    }
+
+    .os-card {
+      min-height: 150px;
+      padding: 24px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .os-card span {
+      display: block;
+      color: var(--muted);
+      font: 10px "Courier New", monospace;
+      letter-spacing: .08em;
+      margin-bottom: 18px;
+    }
+
+    .os-card strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+    .recalc-section {
+      background: var(--dark);
+      color: var(--white);
+      border-top: 0;
+    }
+
+    .recalc-section .section-number,
+    .recalc-section .recalc-kicker {
+      color: #9d9d97;
+    }
+
+    .recalc-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-left: 120px;
+    }
+
+    .recalc-kicker {
+      font: 10px "Courier New", monospace;
+      letter-spacing: .08em;
+      margin-bottom: 16px;
+    }
+
+    .recalc-layout h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(35px, 4vw, 56px);
+      font-weight: 400;
+      line-height: 1.05;
+    }
+
+    .recalc-copy p {
+      margin: 0 0 20px;
+      color: #deded8;
+      font-size: 16px;
+    }
+
+    .terminal-wrap {
+      margin-left: 120px;
+      max-width: 860px;
+      border: 1px solid var(--text);
+      background: #111;
+      color: #efefe8;
+    }
+
+    .terminal-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-bottom: 1px solid #393939;
+      color: #9b9b95;
+      font: 10px "Courier New", monospace;
+      letter-spacing: .08em;
+    }
+
+    .terminal {
+      min-height: 300px;
+      padding: 22px;
+      font-size: 13px;
+      letter-spacing: 0;
+    }
+
+    #terminal-output {
+      min-height: 205px;
+      white-space: pre-wrap;
+    }
+
+    .terminal-form {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-top: 1px solid #393939;
+      padding-top: 15px;
+    }
+
+    .terminal-form label { color: #8f8f89; }
+
+    .terminal-form input {
+      width: 100%;
+      background: transparent;
+      color: #fff;
+      border: 0;
+      outline: 0;
+      font-family: "Courier New", monospace;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 0 46px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-meta {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      font-size: 12px;
+    }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.22);
+      opacity: 0;
+      visibility: hidden;
+      transition: .25s ease;
+      z-index: 80;
+    }
+
+    .drawer-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .note-drawer {
+      position: fixed;
+      z-index: 90;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: min(600px, 92vw);
+      background: var(--paper);
+      border-left: 1px solid var(--text);
+      transform: translateX(100%);
+      transition: transform .32s ease;
+      overflow-y: auto;
+    }
+
+    .note-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-inner {
+      padding: 34px 38px 60px;
+    }
+
+    .drawer-close {
+      display: block;
+      margin-left: auto;
+      border: 1px solid var(--line);
+      background: transparent;
+      width: 38px;
+      height: 38px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .drawer-index {
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 54px;
+    }
+
+    .note-drawer h3 {
+      margin: 16px 0 28px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 4vw, 52px);
+      font-weight: 400;
+      letter-spacing: -.035em;
+      line-height: 1.05;
+    }
+
+    .drawer-body {
+      font-size: 16px;
+      line-height: 1.75;
+      white-space: pre-line;
+    }
+
+    .drawer-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 34px;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      padding: 7px 9px;
+      font-size: 9px;
+      color: var(--muted);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 820px) {
+      .container { width: min(100% - 30px, var(--max)); }
+
+      nav { gap: 12px; }
+      nav a:nth-child(2),
+      nav a:nth-child(3) { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        gap: 60px;
+        padding: 80px 0;
+      }
+
+      h1 { font-size: clamp(58px, 18vw, 92px); }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .about-grid,
+      .timeline,
+      .notes-intro,
+      .os-grid,
+      .recalc-layout,
+      .terminal-wrap {
+        margin-left: 0;
+      }
+
+      .about-grid,
+      .recalc-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .notes-map {
+        min-height: auto;
+        padding: 65px 22px 22px;
+        display: grid;
+        gap: 0;
+        background-size: 34px 34px;
+      }
+
+      .note-node {
+        position: static;
+        width: 100%;
+        padding: 19px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .node-dot {
+        display: inline-block;
+        margin: 0 10px 0 0;
+      }
+
+      .node-title { display: inline; }
+      .node-subtitle { margin-left: 28px; }
+
+      .os-grid { grid-template-columns: 1fr; }
+
+      section { padding: 80px 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">ABHINAV KAMATGI</a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#notes">Notes</a>
+        <a href="#recalc">Recalc</a>
+        <a href="Abhinav_Kamatgi_Resume.pdf" target="_blank">Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="container">
+      <section class="hero" style="border-top:0;">
+        <div>
+          <div class="hero-topline">
+            <span class="eyebrow">PERSONAL INDEX / 2026</span>
+            <span class="status"><span class="status-dot"></span>WASHINGTON, D.C.</span>
+          </div>
+
+          <div class="eyebrow" style="margin-bottom:18px;">INDEX 001 / ABHINAV KAMATGI</div>
+          <h1>Hi, I'm Abhinav.</h1>
+
+          <p class="hero-intro">
+            I'm Abhinav, an Economics + Computer Science student at Georgetown.
+            I'm interested in investing, technology, building things, and going
+            unnecessarily deep into subjects I knew nothing about 20 minutes earlier.
+          </p>
+
+          <div class="hero-links">
+            <a href="mailto:kamatgi.abhinav@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/abhinavkamatgi/" target="_blank">LinkedIn</a>
+            <a href="Abhinav_Kamatgi_Resume.pdf" target="_blank">Résumé</a>
+          </div>
+        </div>
+
+        <div class="hero-index">
+          <a class="index-row" href="#about">
+            <span class="index-number">01</span><span>Who I am</span><span class="index-arrow">↘</span>
+          </a>
+          <a class="index-row" href="#timeline">
+            <span class="index-number">02</span><span>Things I've tried</span><span class="index-arrow">↘</span>
+          </a>
+          <a class="index-row" href="#notes">
+            <span class="index-number">03</span><span>Things I've been thinking about</span><span class="index-arrow">↘</span>
+          </a>
+          <a class="index-row" href="#terminal">
+            <span class="index-number">04</span><span>Ask the website something</span><span class="index-arrow">↘</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="about" class="reveal">
+        <div class="section-head">
+          <div class="section-number">01 / ABOUT</div>
+          <h2>Curious by default.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div>
+            <p>
+              I'm an Economics + Computer Science student at Georgetown University.
+              I started college at the University of Minnesota and transferred to
+              Georgetown because I wanted to be somewhere where business, technology,
+              and policy constantly run into each other.
+            </p>
+            <p>
+              I like being dropped into something unfamiliar, figuring out how it works,
+              and eventually forming a point of view. Investing has become one of my
+              favorite ways to do that because one week I can be learning about software
+              businesses and the next about satellites, insurance, pharmaceuticals, or
+              airline credit cards.
+            </p>
+          </div>
+
+          <div class="about-side">
+            <div class="fact">
+              <span class="fact-label">CURRENTLY</span>
+              Georgetown University
+            </div>
+            <div class="fact">
+              <span class="fact-label">STUDYING</span>
+              Economics + Computer Science
+            </div>
+            <div class="fact">
+              <span class="fact-label">ROUTE</span>
+              Minneapolis → Washington, D.C.
+            </div>
+            <div class="fact">
+              <span class="fact-label">DEFAULT BEHAVIOR</span>
+              Opening another Wikipedia tab
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="timeline" class="reveal">
+        <div class="section-head">
+          <div class="section-number">02 / TIMELINE</div>
+          <h2>A few things I've tried.</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">2024</div>
+            <div class="timeline-content">
+              <h3>Started college in Minnesota</h3>
+              <div class="timeline-meta">UNIVERSITY OF MINNESOTA</div>
+              <p>
+                I came into college studying science and gradually became more interested
+                in economics, business, markets, and technology.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2025</div>
+            <div class="timeline-content">
+              <h3>Atland Ventures</h3>
+              <div class="timeline-meta">GENERAL PARTNER / VENTURE CAPITAL</div>
+              <p>
+                I evaluated early-stage companies, analyzed company materials and
+                financials, and helped write investment memos. It was my first real
+                exposure to investing as a process of learning an unfamiliar business,
+                forming a view, and defending it.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2025</div>
+            <div class="timeline-content">
+              <h3>Built PrepNova</h3>
+              <div class="timeline-meta">CO-FOUNDER / STUDENT PRODUCTIVITY</div>
+              <p>
+                I hate setting up my Google Calendar. I especially hate setting it up
+                before school starts, when I have to add every class, read through every
+                syllabus, and manually enter all the important dates for the semester.
+                My friends and I realized there was an easier way to do this.
+              </p>
+              <p>
+                We created a website that connected to an AI model, went into Canvas,
+                parsed your syllabi, and automatically added important dates to your
+                Google Calendar. But as we built it, we realized there were even more
+                administrative tasks we could eliminate. We added an adaptive study
+                scheduler that looked at what was being taught in class, created study
+                blocks before exams, and scheduled them around events already on your
+                calendar. We also experimented with a shared class database where
+                students could contribute and access notes.
+              </p>
+              <p>
+                We solved the problem we originally set out to solve: wasting time on
+                administrative school tasks. But building PrepNova taught me a different
+                way to approach problems entirely: <strong>determine whether the problem
+                needs to exist at all.</strong>
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2026</div>
+            <div class="timeline-content">
+              <h3>Bold North Capital</h3>
+              <div class="timeline-meta">PRIVATE EQUITY INTERN</div>
+              <p>
+                As an intern for a PE firm, I had the unenviable task of finding 10–15
+                acquisition targets a week. My boss told me to spend my mornings scouring
+                the internet for them. I needed to automate this. My sleep depended on it.
+              </p>
+              <p>
+                I paired a free web scraper in ChatGPT's Atlas with Agent Mode to scrape
+                multiple industry sites at a time, then gave the resulting list back to
+                ChatGPT along with our acquisition criteria memo. In 10 minutes, I had a
+                ranked list of credible acquisition targets, saving me hours of work—and,
+                more importantly, precious sleep.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">NOW</div>
+            <div class="timeline-content">
+              <h3>Georgetown</h3>
+              <div class="timeline-meta">ECONOMICS + COMPUTER SCIENCE</div>
+              <p>
+                Exploring investing, finance, technology, and the places where those
+                subjects overlap.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="notes" class="reveal">
+        <div class="section-head">
+          <div class="section-number">03 / NOTES</div>
+          <h2>Current rabbit holes.</h2>
+        </div>
+
+        <p class="notes-intro">
+          A running collection of companies, markets, ideas, and questions I've found
+          interesting. Click a note to open it.
+        </p>
+
+        <div class="notes-map">
+          <button class="note-node node-1" data-note="rocket">
+            <span class="node-dot"></span>
+            <span class="node-title">Rocket Lab</span>
+            <span class="node-subtitle">BEARISH / NASDAQ: RKLB</span>
+          </button>
+
+          <button class="note-node node-2" data-note="venture">
+            <span class="node-dot"></span>
+            <span class="node-title">Venture Capital</span>
+            <span class="node-subtitle">SYNCERE / HOME ROBOTICS</span>
+          </button>
+
+          <button class="note-node node-3" data-note="news">
+            <span class="node-dot"></span>
+            <span class="node-title">In the news</span>
+            <span class="node-subtitle">TESLA / CYBERCAB</span>
+          </button>
+
+          <button class="note-node node-4" data-note="thoughts">
+            <span class="node-dot"></span>
+            <span class="node-title">Thoughts</span>
+            <span class="node-subtitle">QUITTING / DECISION MAKING</span>
+          </button>
+
+          <button class="note-node node-5" data-note="switzerland">
+            <span class="node-dot"></span>
+            <span class="node-title">Switzerland</span>
+            <span class="node-subtitle">HEALTHCARE / GLP-1</span>
+          </button>
+
+          <button class="note-node node-6" data-note="social">
+            <span class="node-dot"></span>
+            <span class="node-title">Social issues</span>
+            <span class="node-subtitle">EDUCATION / COLLEGE ACCESS</span>
+          </button>
+
+          <button class="note-node node-7" data-note="valuation">
+            <span class="node-dot"></span>
+            <span class="node-title">Great company ≠ great stock</span>
+            <span class="node-subtitle">VALUATION / EXPECTATIONS</span>
+          </button>
+
+          <button class="note-node node-8" data-note="marketmaking">
+            <span class="node-dot"></span>
+            <span class="node-title">Market making</span>
+            <span class="node-subtitle">PRICE / UNCERTAINTY</span>
+          </button>
+
+          <button class="note-node node-9" data-note="minnesota">
+            <span class="node-dot"></span>
+            <span class="node-title">Minnesota sports</span>
+            <span class="node-subtitle">PAIN / OPTIMISM</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="reveal">
+        <div class="section-head">
+          <div class="section-number">04 / NOW</div>
+          <h2>Current operating system.</h2>
+        </div>
+
+        <div class="os-grid">
+          <div class="os-card">
+            <span>LEARNING</span>
+            <strong>C++ + Econometrics</strong>
+          </div>
+          <div class="os-card">
+            <span>THINKING ABOUT</span>
+            <strong>AI × Finance</strong>
+          </div>
+          <div class="os-card">
+            <span>FOLLOWING</span>
+            <strong>Markets + Technology</strong>
+          </div>
+          <div class="os-card">
+            <span>PROBABLY DOING</span>
+            <strong>Reading something unrelated on Wikipedia</strong>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section id="recalc" class="recalc-section reveal">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-number">05 / RECALC</div>
+          <h2>Why Recalc?</h2>
+        </div>
+
+        <div class="recalc-layout">
+          <div>
+            <div class="recalc-kicker">COMMUNITY / MENTORSHIP / GROWTH</div>
+            <h3>Learning faster with people who care about getting better.</h3>
+          </div>
+
+          <div class="recalc-copy">
+            <p>
+              I recently transferred to Georgetown, which means I'm simultaneously
+              navigating a new school, building a new community, and learning a
+              recruiting process that moves quickly.
+            </p>
+            <p>
+              I want to join Recalc because I want to be part of an already
+              established community that can help me both personally and
+              professionally throughout the recruiting process, while surrounding
+              myself with people who take the process and improvement seriously.
+            </p>
+            <p>
+              Finally, I've realized how critical mentorship is to my growth, and
+              I'm hoping to use Recalc's network of alumni to help me grow
+              professionally as well.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="terminal" class="reveal">
+        <div class="section-head">
+          <div class="section-number">06 / TERMINAL</div>
+          <h2>Ask the website something.</h2>
+        </div>
+
+        <div class="terminal-wrap">
+          <div class="terminal-bar">
+            <span>ABHINAV.EXE</span>
+            <span>LOCAL</span>
+          </div>
+          <div class="terminal">
+            <div id="terminal-output">This isn't AI. I just anticipated a few questions.
+
+Try: help, why investing, startup, minnesota, georgetown, random, recalc</div>
+            <form class="terminal-form" id="terminal-form">
+              <label for="terminal-input">&gt;</label>
+              <input id="terminal-input" autocomplete="off" placeholder="type a question or keyword..." />
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-meta">ABHINAV KAMATGI / WASHINGTON, D.C. / 2026</div>
+      <div class="footer-links">
+        <a href="mailto:kamatgi.abhinav@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/abhinavkamatgi/" target="_blank">LinkedIn</a>
+        <a href="#top">Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+
+  <aside class="note-drawer" id="note-drawer" aria-hidden="true">
+    <div class="drawer-inner">
+      <button class="drawer-close" id="drawer-close" aria-label="Close note">×</button>
+      <div class="drawer-index" id="drawer-index"></div>
+      <h3 id="drawer-title"></h3>
+      <div class="drawer-body" id="drawer-body"></div>
+      <div class="drawer-tags" id="drawer-tags"></div>
+    </div>
+  </aside>
+
+  <script>
+    const notes = {
+      rocket: {
+        index: "NOTE 001 / STOCK PITCH",
+        title: "Rocket Lab: execution has to catch up with expectations.",
+        body: "I'm bearish on Rocket Lab (NASDAQ: RKLB). The bull case rests on Rocket Lab evolving from a launch and space-systems company into a more complete end-to-end space platform, with Neutron playing a major role in that expansion. My concern is that the market may be pricing in that vision faster than Rocket Lab can execute it. Neutron has faced development delays, while expanding into more capital-intensive projects increases the cost of further setbacks. To me, that creates an important expectations gap: Rocket Lab does not necessarily need to fail for the stock to disappoint. If major programs take longer to commercialize than investors expect, the combination of delayed revenue, continued investment, and high expectations could pressure the valuation. I like the company and the long-term space opportunity more than I like the risk/reward implied by the stock.",
+        tags: ["NASDAQ: RKLB", "BEARISH", "SPACE", "EXECUTION RISK"]
+      },
+
+      venture: {
+        index: "NOTE 002 / VENTURE CAPITAL",
+        title: "Syncere: home robotics could have more than one exit path.",
+        body: "Syncere is building domestic robots that use legacy form factors, such as vertical and nightstand lamps, to accomplish menial household tasks like laundry, making beds, and dishes. What makes Syncere particularly interesting to me is that I see two potential exit paths. First, Syncere could become a strategic acquisition target for companies in the humanoid robotics space like Tesla, Figure AI, or 1X. While these companies are building human-form robots for the home, Syncere's earlier deployment could provide edge-case data, interaction data, and iterative opportunities that are difficult to replicate without having robots operating in real homes. That data could make Syncere particularly valuable to larger robotics labs. The second path is an acquisition by a major consumer technology company looking to expand further into the home. Amazon, Apple, and Google already have significant home ecosystems, and each has incentives to expand further into physical AI. Syncere's product, experience operating inside the home, and resulting data could make it a natural acquisition target as these companies expand beyond software and smart-home devices. Overall, I think Syncere is interesting not only because of the product itself, but because there are multiple types of strategic buyers that could eventually find its technology and data valuable.",
+        tags: ["VENTURE CAPITAL", "ROBOTICS", "PHYSICAL AI", "SYNCERE"]
+      },
+
+      news: {
+        index: "NOTE 003 / IN THE NEWS",
+        title: "Tesla's Cybercab is testing more than autonomous driving.",
+        body: "One of the most interesting things I've seen in the news lately has been the release of Tesla's Cybercab in Austin as part of its Robotaxi service. Waymo has been the leader in bringing Level 4 autonomous taxi services to cities across the United States, so it's been fascinating to see how Tesla is trying to compete and potentially become the service leader. What I find most interesting about the Cybercab is that it has no steering wheel or pedals. It makes intuitive sense that a truly driverless car shouldn't need traditional driver controls, but existing federal vehicle regulations were largely written with human-driven cars in mind. NHTSA is now auditing Tesla's self-certification that the Cybercab complies with applicable federal safety standards. To me, that creates a really interesting question beyond just Tesla: how should regulation respond when technological innovation moves faster than the rules designed to govern it? It's going to be interesting to see how Tesla straddles the line between reasonable technological innovation and pushing too far in its attempt to reshape the transportation industry.",
+        tags: ["TESLA", "AUTONOMOUS VEHICLES", "REGULATION", "TECHNOLOGY"]
+      },
+
+      thoughts: {
+        index: "NOTE 004 / THOUGHTS",
+        title: "Quitting is underrated.",
+        body: "Quitting properly is one of the best skills you can have. There are some things you should never quit—the old clichés—but there are also times when you need to know how to walk away. There are both logical and intuitive reasons for this. Logically, there's opportunity cost and the sunk cost fallacy. Instead of continuing to force something that isn't working simply because you've already invested time into it, you could put that time toward something more useful and avoid the cost of not quitting. Intuitively, changing your mind is evidence that you've learned something. Quitting forces you to reevaluate what matters, prioritize, and ultimately pick a direction. Persistence is valuable, but only if you're persistent about the right things.",
+        tags: ["DECISION MAKING", "OPPORTUNITY COST", "PRIORITIZATION"]
+      },
+
+      switzerland: {
+        index: "NOTE 005 / COUNTRY PITCH",
+        title: "Switzerland: resilience with exposure to healthcare growth.",
+        body: "Switzerland's legacy of a resilient economy, along with its exposure to the unique growth of the Swiss healthcare industry, makes it an attractive long-term investment opportunity. Switzerland offers protection against global uncertainty through its political neutrality, the stability of the Swiss franc, and multinational companies that have historically generated strong earnings across different market environments. But what makes Switzerland particularly interesting to me is its exposure to growth in healthcare, specifically the GLP-1 industry. JPMorgan Global Research has forecast that the global incretin market, which includes GLP-1s, could reach $200 billion by 2035. Switzerland is home to major pharmaceutical suppliers such as Bachem (SWX: BANB) and Lonza (SWX: LONN), giving investors exposure to the broader pharmaceutical supply chain. The part of this thesis I find most compelling is that investing in Swiss suppliers does not necessarily require picking the eventual winner among individual drugmakers. As demand for GLP-1s grows, companies supplying the industry can benefit from that growth regardless of which individual drug ultimately leads the market. Switzerland's resilient economy combined with its exposure to the pharmaceutical supply chain creates an opportunity to capture upside from global healthcare growth while maintaining protection against broader volatility.",
+        tags: ["SWITZERLAND", "HEALTHCARE", "GLP-1", "COUNTRY PITCH"]
+      },
+
+      social: {
+        index: "NOTE 006 / SOCIAL ISSUES",
+        title: "College should be an option before it becomes a decision.",
+        body: "One social impact issue I've gotten a lot more exposure to over the last year is that the college application cycle rewards people for whom college has always been the next step. To my surprise, many of my friends at my first-year institution had applied to only one school or had only applied because a counselor convinced them. Without programs that helped them see college as an option, some may never have realized they had the opportunity to attend. I think there are three major barriers: students may not have family or friends who understand how the college system works, they may not have the money for standardized testing, counseling, or applications, and the quality and availability of college counseling varies heavily between schools. Programs like QuestBridge, fee waivers, and university outreach help address these problems, but just because information is available doesn't mean students will see it. I think states should incorporate standardized postsecondary education into high school curricula. College may not be right for every student, but it should be an option for everyone. Giving students in grades 9 through 12 basic guidance on the application process would help ensure that students don't lose access to college simply because they never knew they could attend.",
+        tags: ["EDUCATION", "COLLEGE ACCESS", "SOCIAL IMPACT"]
+      },
+
+      valuation: {
+        index: "NOTE 007 / INVESTING",
+        title: "A great company can still be a bad stock.",
+        body: "One of the ideas I keep coming back to in public markets is that business quality and investment quality are not the same thing. A company can have a strong product, attractive industry, and impressive growth and still be a poor investment if the market price already assumes too much. That makes expectations just as important as the underlying business. The question I find interesting isn't only whether a company will grow. It's what the market already believes about that growth—and where reality might differ.",
+        tags: ["INVESTING", "VALUATION", "EXPECTATIONS"]
+      },
+
+      marketmaking: {
+        index: "NOTE 008 / MARKETS",
+        title: "Market making is a game of pricing uncertainty.",
+        body: "What I find interesting about market making is that you rarely know the exact value you're trying to price. You have to form a range, decide how much risk you're willing to take, and continuously update your view as new information arrives. The bid and ask aren't just prices; they're expressions of both your estimate of fair value and the edge you need to be compensated for uncertainty.",
+        tags: ["MARKETS", "PRICING", "UNCERTAINTY"]
+      },
+
+      minnesota: {
+        index: "NOTE 009 / IMPORTANT RESEARCH",
+        title: "Minnesota sports: optimism despite overwhelming evidence.",
+        body: "Growing up around Minnesota sports has been an unusually effective lesson in expectations management. Every season creates a new reason to believe things will be different, followed by an equally creative reason they aren't. I continue to participate in this cycle voluntarily.",
+        tags: ["MINNESOTA", "SPORTS", "OPTIMISM"]
+      }
+    };
+
+    const drawer = document.getElementById("note-drawer");
+    const overlay = document.getElementById("drawer-overlay");
+    const closeButton = document.getElementById("drawer-close");
+    const drawerIndex = document.getElementById("drawer-index");
+    const drawerTitle = document.getElementById("drawer-title");
+    const drawerBody = document.getElementById("drawer-body");
+    const drawerTags = document.getElementById("drawer-tags");
+
+    function openNote(key) {
+      const note = notes[key];
+      if (!note) return;
+
+      drawerIndex.textContent = note.index;
+      drawerTitle.textContent = note.title;
+      drawerBody.textContent = note.body;
+      drawerTags.innerHTML = note.tags.map(tag => `<span class="tag">${tag}</span>`).join("");
+
+      drawer.classList.add("open");
+      overlay.classList.add("open");
+      drawer.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeNote() {
+      drawer.classList.remove("open");
+      overlay.classList.remove("open");
+      drawer.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    document.querySelectorAll(".note-node").forEach(node => {
+      node.addEventListener("click", () => openNote(node.dataset.note));
+    });
+
+    closeButton.addEventListener("click", closeNote);
+    overlay.addEventListener("click", closeNote);
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeNote();
+    });
+
+    const terminalForm = document.getElementById("terminal-form");
+    const terminalInput = document.getElementById("terminal-input");
+    const terminalOutput = document.getElementById("terminal-output");
+
+    const terminalAnswers = {
+      "help": "Try: why investing, startup, minnesota, georgetown, random, recalc",
+      "why investing": "I like being forced to learn unfamiliar industries quickly, form a view, and then defend why I think the market or another investor might be missing something.",
+      "investing": "I like being forced to learn unfamiliar industries quickly, form a view, and then defend why I think the market or another investor might be missing something.",
+      "startup": "PrepNova started because I hated manually putting syllabus dates into Google Calendar. It eventually became an experiment in asking whether annoying administrative problems need to exist at all.",
+      "prepnova": "PrepNova started because I hated manually putting syllabus dates into Google Calendar. It eventually became an experiment in asking whether annoying administrative problems need to exist at all.",
+      "minnesota": "Home. Also the source of an unreasonable amount of sports optimism.",
+      "vikings": "I'd rather not talk about it.",
+      "georgetown": "I transferred to Georgetown in 2026. I'm studying Economics + Computer Science and trying to take advantage of being somewhere business, technology, and policy constantly overlap.",
+      "recalc": "Community, mentorship, and a faster learning curve. I want to learn from people further along in recruiting while contributing what I've learned from investing and building.",
+      "random": "There is a very good chance I currently have a Wikipedia tab open about something completely unrelated to what I'm supposed to be doing."
+    };
+
+    terminalForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const raw = terminalInput.value.trim();
+      if (!raw) return;
+
+      const key = raw.toLowerCase();
+      let response = terminalAnswers[key];
+
+      if (!response) {
+        const match = Object.keys(terminalAnswers).find(k => key.includes(k));
+        response = match
+          ? terminalAnswers[match]
+          : "I didn't anticipate that one. Try 'help' for the questions I did.";
+      }
+
+      terminalOutput.textContent += `\n\n> ${raw}\n${response}`;
+      terminalInput.value = "";
+      terminalOutput.parentElement.scrollTop = terminalOutput.parentElement.scrollHeight;
+    });
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      reveals.forEach(el => observer.observe(el));
+    } else {
+      reveals.forEach(el => el.classList.add("visible"));
+    }
+  </script>
+</body>
+</html>
