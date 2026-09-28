@@ -1130,43 +1130,6 @@
       if (event.key === "Escape") closeNote();
     });
 
-    const terminalForm = document.getElementById("terminal-form");
-    const terminalInput = document.getElementById("terminal-input");
-    const terminalOutput = document.getElementById("terminal-output");
-
-    const terminalAnswers = {
-      "help": "Try: why investing, startup, minnesota, georgetown, random, recalc",
-      "why investing": "I like being forced to learn unfamiliar industries quickly, form a view, and then defend why I think the market or another investor might be missing something.",
-      "investing": "I like being forced to learn unfamiliar industries quickly, form a view, and then defend why I think the market or another investor might be missing something.",
-      "startup": "PrepNova started because I hated manually putting syllabus dates into Google Calendar. It eventually became an experiment in asking whether annoying administrative problems need to exist at all.",
-      "prepnova": "PrepNova started because I hated manually putting syllabus dates into Google Calendar. It eventually became an experiment in asking whether annoying administrative problems need to exist at all.",
-      "minnesota": "Home. Also the source of an unreasonable amount of sports optimism.",
-      "vikings": "I'd rather not talk about it.",
-      "georgetown": "I transferred to Georgetown in 2026. I'm studying Economics + Computer Science and trying to take advantage of being somewhere business, technology, and policy constantly overlap.",
-      "recalc": "Community, mentorship, and a faster learning curve. I want to learn from people further along in recruiting while contributing what I've learned from investing and building.",
-      "random": "There is a very good chance I currently have a Wikipedia tab open about something completely unrelated to what I'm supposed to be doing."
-    };
-
-    terminalForm.addEventListener("submit", event => {
-      event.preventDefault();
-      const raw = terminalInput.value.trim();
-      if (!raw) return;
-
-      const key = raw.toLowerCase();
-      let response = terminalAnswers[key];
-
-      if (!response) {
-        const match = Object.keys(terminalAnswers).find(k => key.includes(k));
-        response = match
-          ? terminalAnswers[match]
-          : "I didn't anticipate that one. Try 'help' for the questions I did.";
-      }
-
-      terminalOutput.textContent += `\n\n> ${raw}\n${response}`;
-      terminalInput.value = "";
-      terminalOutput.parentElement.scrollTop = terminalOutput.parentElement.scrollHeight;
-    });
-
     const reveals = document.querySelectorAll(".reveal");
 
     if ("IntersectionObserver" in window) {
