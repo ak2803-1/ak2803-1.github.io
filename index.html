@@ -55,13 +55,6 @@
     .node-subtitle,
     .drawer-index,
     .tag,
-    .terminal,
-    .footer-meta,
-    .status,
-    .index-number {
-      font-family: "Courier New", Courier, monospace;
-      letter-spacing: .06em;
-    }
 
     header {
       position: sticky;
@@ -431,55 +424,6 @@
       font-size: 16px;
     }
 
-    .terminal-wrap {
-      margin-left: 120px;
-      max-width: 860px;
-      border: 1px solid var(--text);
-      background: #111;
-      color: #efefe8;
-    }
-
-    .terminal-bar {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 14px;
-      border-bottom: 1px solid #393939;
-      color: #9b9b95;
-      font: 10px "Courier New", monospace;
-      letter-spacing: .08em;
-    }
-
-    .terminal {
-      min-height: 300px;
-      padding: 22px;
-      font-size: 13px;
-      letter-spacing: 0;
-    }
-
-    #terminal-output {
-      min-height: 205px;
-      white-space: pre-wrap;
-    }
-
-    .terminal-form {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-top: 1px solid #393939;
-      padding-top: 15px;
-    }
-
-    .terminal-form label { color: #8f8f89; }
-
-    .terminal-form input {
-      width: 100%;
-      background: transparent;
-      color: #fff;
-      border: 0;
-      outline: 0;
-      font-family: "Courier New", monospace;
-    }
-
     footer {
       border-top: 1px solid var(--line);
       padding: 32px 0 46px;
@@ -587,16 +531,9 @@
       color: var(--muted);
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
+    .reveal { opacity: 1; transform: none; }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
+    .reveal.visible { opacity: 1; transform: none; }
 
     @media (max-width: 820px) {
       .container { width: min(100% - 30px, var(--max)); }
@@ -624,9 +561,6 @@
       .notes-intro,
       .os-grid,
       .recalc-layout,
-      .terminal-wrap {
-        margin-left: 0;
-      }
 
       .about-grid,
       .recalc-layout {
@@ -1130,22 +1064,6 @@
       if (event.key === "Escape") closeNote();
     });
 
-    const reveals = document.querySelectorAll(".reveal");
-
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.08 });
-
-      reveals.forEach(el => observer.observe(el));
-    } else {
-      reveals.forEach(el => el.classList.add("visible"));
-    }
   </script>
 </body>
 </html>
